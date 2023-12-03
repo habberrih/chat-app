@@ -1,6 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/home_page.dart';
+
 void main() {
   runApp(DevicePreview(
     enabled: true,
@@ -13,8 +15,10 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: const Text('Data'),
+    return const MaterialApp(
+      home: HomePage(),
+      title: 'Chat App',
+      debugShowCheckedModeBanner: false,
     );
   }
 }
