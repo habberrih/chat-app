@@ -1,7 +1,8 @@
+import 'package:chat_app/pages/home_page.dart';
+import 'package:chat_app/pages/login_page.dart';
+import 'package:chat_app/styles/app_colors.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/home_page.dart';
 
 void main() {
   runApp(DevicePreview(
@@ -15,10 +16,18 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Urbanist',
+        scaffoldBackgroundColor: AppColors.background,
+      ),
       title: 'Chat App',
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }
