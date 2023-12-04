@@ -1,3 +1,5 @@
+import 'package:chat_app/config/app_routes.dart';
+
 import '../config/app_strings.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +80,8 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/main');
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppRoutes.main);
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
