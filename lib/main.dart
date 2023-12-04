@@ -1,5 +1,6 @@
 import 'package:chat_app/pages/home_page.dart';
 import 'package:chat_app/pages/login_page.dart';
+import 'package:chat_app/pages/main_page.dart';
 import 'package:chat_app/styles/app_colors.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,9 @@ class HomeApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/': (context) => const LoginPage(),
+        '/home': (context) => const HomePage(),
+        '/main': (context) => const MainPage(),
       },
     );
   }
