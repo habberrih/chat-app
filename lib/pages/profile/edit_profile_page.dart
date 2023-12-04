@@ -1,4 +1,5 @@
 import 'package:chat_app/styles/app_colors.dart';
+import 'package:chat_app/styles/app_text.dart';
 
 import '/config/app_strings.dart';
 import '/widgets/app_text_field.dart';
@@ -84,6 +85,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 height: 10,
               ),
               Container(
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
                 decoration: BoxDecoration(
                   color: AppColors.fieldColor,
                   borderRadius: const BorderRadius.all(
@@ -93,13 +95,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(AppStrings.gender),
+                    Text(
+                      AppStrings.gender,
+                      style: AppText.body1.copyWith(
+                        fontSize: 12,
+                      ), 
+                    ),
                     Row(
                       children: [
                         Expanded(
                           child: RadioListTile(
                             title: const Text(AppStrings.male),
                             value: Gender.male,
+                            visualDensity: const VisualDensity(
+                              horizontal: VisualDensity.minimumDensity,
+                              vertical: VisualDensity.minimumDensity
+                            ),
                             contentPadding: EdgeInsets.zero,
                             groupValue: gender,
                             onChanged: (value) {
@@ -113,6 +124,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           child: RadioListTile(
                             title: const Text(AppStrings.female),
                             value: Gender.female,
+                            visualDensity: const VisualDensity(
+                              horizontal: VisualDensity.minimumDensity,
+                              vertical: VisualDensity.minimumDensity
+                            ),
                             contentPadding: EdgeInsets.zero,
                             groupValue: gender,
                             onChanged: (value) {
