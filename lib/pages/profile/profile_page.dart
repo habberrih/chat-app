@@ -1,8 +1,9 @@
-import 'package:chat_app/config/app_routes.dart';
-import 'package:chat_app/config/app_strings.dart';
+import '/config/app_routes.dart';
+import '/config/app_strings.dart';
+import '/widgets/user_avatar.dart';
 
-import '../../styles/app_text.dart';
-import '../../widgets/toolbar.dart';
+import '/styles/app_text.dart';
+import '/widgets/toolbar.dart';
 import 'package:flutter/material.dart';
 
 enum ProfileMenu {
@@ -48,39 +49,33 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: const Column(
+        //! const
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(
-              //! const
-              Radius.circular(16),
-            ),
-            child: Image.asset(
-              'assets/temp/user1.png',
-              width: 90,
-              height: 90,
-            ),
+          UserAvatar(
+            profileImage: 'assets/temp/user1.png',
+            size: 90,
           ),
-          const SizedBox(
+          SizedBox(
             height: 24,
           ),
-          const Text(
+          Text(
             //! const
             'Abdullah Habberrih',
             style: AppText.header2,
           ),
-          const SizedBox(
+          SizedBox(
             height: 12,
           ),
-          const Text(
+          Text(
             //! const
             'Libyan',
             style: AppText.subtitle3,
           ),
-          const SizedBox(
+          SizedBox(
             height: 24,
           ),
-          const Row(
+          Row(
             //! const
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -113,7 +108,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(
+          Divider(
             //! const
             thickness: 1,
             height: 24,
