@@ -1,3 +1,4 @@
+import 'package:chat_app/config/app_icons.dart';
 import 'package:chat_app/config/app_routes.dart';
 
 import '../config/app_strings.dart';
@@ -69,7 +70,7 @@ class LoginPage extends StatelessWidget {
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
                     ),
-                    child: const Text('Forgot password?'),
+                    child: const Text(AppStrings.forgotPassword),
                   ),
                 ),
                 const SizedBox(
@@ -87,12 +88,12 @@ class LoginPage extends StatelessWidget {
                       foregroundColor: Colors.black,
                       backgroundColor: Colors.amber,
                     ),
-                    child: const Text('Log in'),
+                    child: const Text(AppStrings.login),
                   ),
                 ),
                 const Spacer(),
                 const Text(
-                  'Or sign in with',
+                  AppStrings.orSignInWith,
                   style: TextStyle(color: Colors.white),
                 ),
                 const SizedBox(
@@ -117,14 +118,14 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/google.png',
+                          AppIcons.icGoogle,
                           width: 22,
                           height: 22,
                         ),
                         const SizedBox(
                           width: 8,
                         ),
-                        const Text('Login with Google'),
+                        const Text(AppStrings.loginWithGoogle),
                       ],
                     ),
                   ),
@@ -151,14 +152,14 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/facebook.png',
+                          AppIcons.icFacebook,
                           width: 22,
                           height: 22,
                         ),
                         const SizedBox(
                           width: 8,
                         ),
-                        const Text('Login with Facebook'),
+                        const Text(AppStrings.loginWithFacebook),
                       ],
                     ),
                   ),
@@ -169,7 +170,7 @@ class LoginPage extends StatelessWidget {
                 Row(
                   children: [
                     const Text(
-                      'Don\'t have account?',
+                      AppStrings.dontHaveAccount,
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -182,7 +183,7 @@ class LoginPage extends StatelessWidget {
                         foregroundColor: Colors.amber,
                       ),
                       child: const Text(
-                        'Sign up',
+                        AppStrings.signup,
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                         ),
