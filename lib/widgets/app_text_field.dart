@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../styles/app_colors.dart';
+
 class AppTextField extends StatelessWidget {
   final String hint;
   const AppTextField({super.key, required this.hint});
@@ -15,7 +17,7 @@ class AppTextField extends StatelessWidget {
           ),
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.5),
+        fillColor: AppColors.fieldColor,
       ),
     );
   }
