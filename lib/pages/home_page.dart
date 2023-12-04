@@ -1,4 +1,9 @@
-import 'package:chat_app/styles/app_colors.dart';
+import '../config/app_icons.dart';
+import '../config/app_strings.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../widgets/post_item.dart';
+import '../widgets/toolbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,44 +14,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> users = [];
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        title: const Text('5minuteflutter'),
-        centerTitle: false,
+    mockUsersFromServer();
+    return Scaffold(
+      appBar: Toolbar(
+        title: AppStrings.appName,
         actions: [
-          Icon(Icons.location_on_outlined),
+          IconButton(
+            onPressed: () {
+              // ** This is the action of the location icon
+            },
+            icon: SvgPicture.asset(AppIcons.icLocation),
+          ),
         ],
       ),
-      body: ListView(
-        children: mockUsersFromServer(),
+      body: ListView.separated(
+        itemBuilder: (context, index) {
+          return PostItem(user: users[index]);
+        },
+        itemCount: users.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const SizedBox(
+            height: 12,
+          );
+        },
       ),
     );
   }
-}
 
-Widget _userItem() {
-  return Row(
-      children: [
-        Image.asset(
-          'assets/temp/me.jpeg',
-          width: 48,
-          height: 48,
-        ),
-        const SizedBox(
-          width: 16,
-        ),
-        Text('Abdullah Habberrih'),
-      ],
-    );
-}
-
-List<Widget> mockUsersFromServer() {
-  List<Widget> users = [];
-  for(var i = 0; i< 500; i++){
-    users.add(_userItem());
+  mockUsersFromServer() {
+    for (var i = 0; i < 500; i++) {
+      users.add('User Number $i');
+    }
   }
-  return users; 
 }
