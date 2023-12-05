@@ -1,3 +1,5 @@
+import 'package:chat_app/config/app_routes.dart';
+
 import '../config/app_icons.dart';
 import '../config/app_strings.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               // ** This is the action of the location icon
+              Navigator.of(context).pushNamed(AppRoutes.nearby);
             },
             icon: SvgPicture.asset(AppIcons.icLocation),
           ),
