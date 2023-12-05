@@ -62,7 +62,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ],
               ),
               const SizedBox(
-                height: 60,
+                height: 50,
               ),
               AppTextField(hint: AppStrings.firstName),
               const SizedBox(
@@ -82,7 +82,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               AppTextField(hint: AppStrings.birthday),
               const SizedBox(
-                height: 10,
+                height: 16,
               ),
               Container(
                 padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
@@ -99,7 +99,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       AppStrings.gender,
                       style: AppText.body1.copyWith(
                         fontSize: 12,
-                      ), 
+                      ),
                     ),
                     Row(
                       children: [
@@ -108,9 +108,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             title: const Text(AppStrings.male),
                             value: Gender.male,
                             visualDensity: const VisualDensity(
-                              horizontal: VisualDensity.minimumDensity,
-                              vertical: VisualDensity.minimumDensity
-                            ),
+                                horizontal: VisualDensity.minimumDensity,
+                                vertical: VisualDensity.minimumDensity),
                             contentPadding: EdgeInsets.zero,
                             groupValue: gender,
                             onChanged: (value) {
@@ -126,7 +125,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             value: Gender.female,
                             visualDensity: const VisualDensity(
                               horizontal: VisualDensity.minimumDensity,
-                              vertical: VisualDensity.minimumDensity
+                              vertical: VisualDensity.minimumDensity,
                             ),
                             contentPadding: EdgeInsets.zero,
                             groupValue: gender,
