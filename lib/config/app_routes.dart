@@ -6,7 +6,7 @@ import '../pages/login_page.dart';
 
 class AppRoutes {
   static final pages = {
-    login: (context) => const LoginPage(),
+    login: (context) => LoginPage(),
     home: (context) => const HomePage(),
     main: (context) => const MainPage(),
     editProfile: (context) => const EditProfilePage(),
