@@ -1,10 +1,13 @@
 import 'package:chat_app/config/app_icons.dart';
 import 'package:chat_app/config/app_routes.dart';
-
+import 'package:http/http.dart' as http;
 import '../config/app_strings.dart';
 import 'package:flutter/material.dart';
 
+const baseURL = 'http://localhost:3000/api/v1';
+
 class LoginPage extends StatelessWidget {
+  final loginEndpoint = '$baseURL/login';
   const LoginPage({super.key});
 
   @override
@@ -198,5 +201,10 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<String> login() async {
+    final res = await http.post(Uri.parse(loginEndpoint));
+    return '';
   }
 }
