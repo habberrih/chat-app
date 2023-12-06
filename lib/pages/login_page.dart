@@ -8,7 +8,11 @@ const baseURL = 'http://localhost:3000/api/v1';
 
 class LoginPage extends StatelessWidget {
   final loginEndpoint = '$baseURL/login';
-  const LoginPage({super.key});
+
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextField(
+                  controller: usernameController,
                   decoration: InputDecoration(
                     hintText: 'Username',
                     border: const OutlineInputBorder(
@@ -204,7 +209,19 @@ class LoginPage extends StatelessWidget {
   }
 
   Future<String> login() async {
-    final res = await http.post(Uri.parse(loginEndpoint));
-    return '';
+    String username = usernameController.text;
+    String password = passwordController.text;
+
+    final res = await http.post(Uri.parse(loginEndpoint), body: {
+      'username': username,
+      'password': password,
+    });
+    if (res.statusCode == 200) {
+      // Login successful
+      return res.body;
+    } else {
+      // Login failed
+      throw Exception('Failed to login');
+    }
   }
 }
