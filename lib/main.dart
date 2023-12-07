@@ -1,14 +1,21 @@
+import 'package:chat_app/provider/app_repo.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'styles/app_colors.dart';
 import 'config/app_routes.dart';
 
 void main() {
-  runApp(DevicePreview(
-    enabled: true,
-    builder: (BuildContext context) => const HomeApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider<AppRepo>(
+      create: (BuildContext context) => AppRepo(),
+      child: DevicePreview(
+        enabled: true,
+        builder: (BuildContext context) => const HomeApp(),
+      ),
+    ),
+  );
 }
 
 class HomeApp extends StatelessWidget {
