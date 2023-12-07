@@ -1,3 +1,6 @@
+import 'package:chat_app/provider/login_provider.dart';
+import 'package:provider/provider.dart';
+
 import '../pages/home_page.dart';
 import '../pages/main_page.dart';
 import '../pages/nearby_page.dart';
@@ -6,7 +9,10 @@ import '../pages/login_page.dart';
 
 class AppRoutes {
   static final pages = {
-    login: (context) => LoginPage(),
+    login: (context) => ChangeNotifierProvider(
+          create: (context) => LoginProvider(),
+          child: const LoginPage(),
+        ),
     home: (context) => const HomePage(),
     main: (context) => const MainPage(),
     editProfile: (context) => const EditProfilePage(),
