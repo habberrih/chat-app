@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:chat_app/data/services/base_service.dart';
+
 import '/config/app_config.dart';
 import '/data/responses/login_response.dart';
 import 'package:http/http.dart' as http;
 
-class LoginService {
+class LoginService extends ServiceBase<LoginResponse> {
   final String username;
   final String password;
 
