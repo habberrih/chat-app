@@ -1,18 +1,15 @@
-import 'package:chat_app/config/app_icons.dart';
-import 'package:chat_app/config/app_routes.dart';
-import 'package:http/http.dart' as http;
+import '/provider/app_repo.dart';
+
+import '/config/app_icons.dart';
+import '/config/app_routes.dart';
+import '/provider/login_provider.dart';
+import 'package:provider/provider.dart';
+
 import '../config/app_strings.dart';
 import 'package:flutter/material.dart';
 
-const baseURL = 'http://localhost:3000/api/v1';
-
 class LoginPage extends StatelessWidget {
-  final loginEndpoint = '$baseURL/login';
-
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextField(
-                  controller: usernameController,
+                  onChanged: (value) {
+                    context.read<LoginProvider>().username = value;
+                  },
                   decoration: InputDecoration(
                     hintText: 'Username',
                     border: const OutlineInputBorder(
@@ -60,6 +59,9 @@ class LoginPage extends StatelessWidget {
                   height: 16,
                 ),
                 TextField(
+                  onChanged: (value) {
+                    context.read<LoginProvider>().password = value;
+                  },
                   decoration: InputDecoration(
                     hintText: 'Password',
                     border: const OutlineInputBorder(
@@ -89,6 +91,16 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
+                      // context.read<LoginProvider>().login().then(
+                      //   (value) {
+                      //     context.read<AppRepo>().user =
+                      //         value.user;
+                      //     context.read<AppRepo>().token =
+                      //         value.token;
+                      //     Navigator.of(context)
+                      //         .pushReplacementNamed(AppRoutes.main);
+                      //   },
+                      // );
                       Navigator.of(context)
                           .pushReplacementNamed(AppRoutes.main);
                     },
@@ -206,22 +218,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<String> login() async {
-    String username = usernameController.text;
-    String password = passwordController.text;
-
-    final res = await http.post(Uri.parse(loginEndpoint), body: {
-      'username': username,
-      'password': password,
-    });
-    if (res.statusCode == 200) {
-      // Login successful
-      return res.body;
-    } else {
-      // Login failed
-      throw Exception('Failed to login');
-    }
   }
 }
