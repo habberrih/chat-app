@@ -1,3 +1,6 @@
+import 'package:chat_app/provider/app_repo.dart';
+import 'package:provider/provider.dart';
+
 import '/config/app_routes.dart';
 import '/config/app_strings.dart';
 import '/widgets/user_avatar.dart';
@@ -16,6 +19,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = context.read<AppRepo>().user;
     return Scaffold(
       appBar: Toolbar(
         title: AppStrings.profile,
