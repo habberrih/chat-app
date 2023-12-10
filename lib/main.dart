@@ -1,4 +1,5 @@
 import 'package:chat_app/provider/app_repo.dart';
+import 'package:chat_app/provider/post_provider.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +9,15 @@ import 'config/app_routes.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider<AppRepo>(
-      create: (BuildContext context) => AppRepo(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppRepo>(
+          create: (BuildContext context) => AppRepo(),
+        ),
+        ChangeNotifierProvider<PostProvider>(
+          create: (BuildContext context) => PostProvider(),
+        )
+      ],
       child: DevicePreview(
         enabled: true,
         builder: (BuildContext context) => const HomeApp(),
