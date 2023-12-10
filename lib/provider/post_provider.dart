@@ -9,5 +9,6 @@ class PostProvider extends ChangeNotifier {
   getPost() async {
     list.clear();
     list.addAll(await GetPostService().call());
+    notifyListeners();
   }
 }
