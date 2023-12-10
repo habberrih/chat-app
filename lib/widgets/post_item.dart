@@ -1,10 +1,12 @@
+import 'package:chat_app/config/app_config.dart';
 import 'package:flutter/material.dart';
 
+import '../data/models/post.dart';
 import '../styles/app_text.dart';
 
 class PostItem extends StatelessWidget {
-  final String user;
-  const PostItem({super.key, required this.user});
+  final Post post;
+  const PostItem({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PostItem extends StatelessWidget {
                 width: 16,
               ),
               Text(
-                user,
+                '${post.owner?.name}',
                 style: AppText.subtitle3,
               ),
             ],
@@ -31,13 +33,12 @@ class PostItem extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          Image.asset('assets/temp/post1.jpg'),
+          Image.network('${AppConfig.baseURL}${post.image}'),
           const SizedBox(
             height: 12,
           ),
-          const Text(
-            //! const
-            'Today is the first day of the first day of the first day of the first day of the first day of the first',
+          Text(
+            post.message ?? "",
             style: AppText.subtitle3,
           ),
         ],
