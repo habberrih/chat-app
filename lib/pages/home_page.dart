@@ -1,4 +1,6 @@
 import 'package:chat_app/config/app_routes.dart';
+import 'package:chat_app/provider/post_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../config/app_icons.dart';
 import '../config/app_strings.dart';
@@ -16,10 +18,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> users = [];
+  @override
+  void initState() {
+    super.initState();
+    context.read<PostProvider>().getPost();
+  }
+
   @override
   Widget build(BuildContext context) {
-    mockUsersFromServer();
     return Scaffold(
       appBar: Toolbar(
         title: AppStrings.appName,
@@ -33,23 +39,23 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          return PostItem(user: users[index]);
-        },
-        itemCount: users.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(
-            height: 12,
+      body: Consumer<PostProvider>(
+        builder: (context, value, child) {
+          return ListView.separated(
+            itemBuilder: (context, index) {
+              return PostItem(
+                post: value.list[index],
+              );
+            },
+            itemCount: value.list.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                height: 12,
+              );
+            },
           );
         },
       ),
     );
-  }
-
-  mockUsersFromServer() {
-    for (var i = 0; i < 500; i++) {
-      users.add('User Number $i');
-    }
   }
 }
